@@ -118,4 +118,15 @@ public class HashListaEncadeada<Key, Value> extends HashTable<Key, Value> {
 
         return vals[hashKey].get(key);
 	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		N = 0;
+		M = 16;
+		
+		vals = new LinkedHashMap[M];
+        for(int i=0; i<M; i++)
+            vals[i] = new LinkedHashMap<Key, Value>();
+	}
 }

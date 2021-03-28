@@ -117,4 +117,14 @@ public class HashTentativaLinear<Key, Value> extends HashTable<Key, Value> {
 				return vals[i];
 		return null;
 	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		N = 0;
+		M = 16;
+		keys = (Key[]) new Object[M];
+		vals = (Value[]) new Object[M];
+	}
+
 }

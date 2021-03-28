@@ -37,11 +37,12 @@ public class HashRemocaoFlag<Key, Value> extends HashTable<Key, Value> {
 		
 		HashRemocaoFlag<Key, Value> t;
 		t = new HashRemocaoFlag<Key, Value> (cap);
+		int limit = Math.min(cap, M);
 		
-		for(int i=0; i<keys.length; i++)
+		for(int i=0; i< limit; i++)
 			t.removed[i] = removed[i];
 
-		for (int i = 0; i < keys.length; i++)
+		for (int i = 0; i < limit; i++)
 			if (keys[i] != null)
 				t.put(keys[i], vals[i]);
 
@@ -114,5 +115,15 @@ public class HashRemocaoFlag<Key, Value> extends HashTable<Key, Value> {
 			if (keys[i].equals(key) && !removed[i])
 				return vals[i];
 		return null;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		N = 0;
+		M = 16;
+		keys = (Key[]) new Object[M];
+		vals = (Value[]) new Object[M];
+		removed = new boolean[M];
 	}
 }
